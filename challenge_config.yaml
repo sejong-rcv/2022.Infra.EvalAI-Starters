@@ -1,0 +1,189 @@
+# If you are not sure what all these fields mean, please refer our documentation here:
+# https://evalai.readthedocs.io/en/latest/configuration.html
+
+title: Random Number Generator Challenge # 챌린지 제목
+short_description: Random number generation challenge for each submission # 간단한 챌린지 설명
+
+# --- #
+# 아래 부분들은 챌린지 페이지에서 이 챌린지에 대한 설명을 보여주는 부분입니다. 푸는 사람을 위해 최대한 자세하게 해당 경로에 작성합시다. #
+# HTML로 입력해야 보는 사람이 쉽게 읽을 수 있습니다. #
+# https://html-online.com/editor/ #
+# 위의 사이트 같은 곳에서 작성해서 입력하거나, 직접 잘 입력합시다. #
+description: templates/description.html 
+evaluation_details: templates/evaluation_details.html
+terms_and_conditions: templates/terms_and_conditions.html
+image: logo.jpg
+submission_guidelines: templates/submission_guidelines.html
+leaderboard_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras egestas a libero nec sagittis.
+# --- #
+
+evaluation_script: evaluation_script.zip # 평가 스크립트
+
+# --- #
+# 수정할 필요 없음 #
+remote_evaluation: False
+is_docker_based: False
+# --- #
+
+# --- #
+# 시작 날짜와 종료 날짜만 필요하다면 수정 #
+start_date: 2019-01-01 00:00:00
+end_date: 2099-05-31 23:59:59
+published: True
+# --- #
+
+# --- #
+# 리더보드의 평가 메트릭 관한 부분 #
+# 평가 매트릭 이름을 여기서 입력합니다. #
+# 평가는 evalutaion_script/main.py에서 작성한 코드로 하고, 리더보드 자체는 맨 아래에서 만듭니다. #
+leaderboard:
+  - id: 1
+    schema:
+      {
+        "labels": ["Metric1", "Metric2", "Metric3", "Total"],
+        "default_order_by": "Total",
+        # --- #
+        # 리더보드에 설명을 붙이고싶으면 아래와 같이 가능합니다. #
+        # 오름차순 내림차순 설정과, 간단한 설명을 리더보드 페이지에 추가할 수 있습니다. #
+        "metadata": {
+          "Metric1": {
+            "sort_ascending": True,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          }
+        }
+        # --- #
+      }
+# --- #
+
+# --- #
+# 챌린지 생성하는 부분 #
+# 챌린지는 여러개를 생성할 수 있습니다. (id 번호로 구분) #
+# 이 설정은 evaluation에도 영향을 미치니 주석을 잘 보고 설정해주세요. #
+challenge_phases:
+  - id: 1
+    name: Dev Phase # 챌린지 이름
+    description: templates/challenge_phase_1_description.html #챌린지 설명이 들어가는 위치
+    leaderboard_public: False # 리더보드 공개 유무
+
+    # --- #
+    # 시작-끝 날짜만 필요할 경우 수정 #
+    is_public: True
+    is_submission_public: True
+    start_date: 2019-01-19 00:00:00
+    end_date: 2099-04-25 23:59:59
+    # --- #
+
+    # --- #
+    # 정답 파일(json, csv 등등)의 위치 #
+    # annotations폴더에 test.json이 정답이라면, annotations/test.json이라고 입력 #
+    # 여기서 입력한 정답 파일은 evalutaion_script/main.py에서 test_annotation_file 파라미터로 들어갑니다. #
+    test_annotation_file: annotations/test_annotations_devsplit.json
+    # --- #
+    
+    # --- #
+    # evaluation_script/main.py에서 사용하는 구분자 #
+    # 챌린지가 여러개라면 이 codename으로 구분하고 아니라면 필요 없습니다. #
+    codename: dev
+    # --- #
+
+    # --- #
+    # 제출 횟수 수정하는 부분 #
+    max_submissions_per_day: 5 #하루
+    max_submissions_per_month: 50 #월
+    max_submissions: 50 #전체
+    # --- #
+
+    # --- #
+    # 수정 할 필요 없음 #
+    default_submission_meta_attributes:
+      - name: method_name
+        is_visible: True
+      - name: method_description
+        is_visible: True
+    is_restricted_to_select_one_submission: False
+    is_partial_submission_evaluation_enabled: False
+    # --- #
+
+    # --- #
+    # 정답 파일로 받을 양식 #
+    # 직접 작성한 evaluation 코드에 맞추어 파일 형식을 수정하면 됩니다. #
+    allowed_submission_file_types: ".json, .zip, .txt, .tsv, .gz, .csv, .h5, .npy, .npz"
+    # --- #
+
+    # --- #
+    # 위의 부분 참조 #
+  - id: 2
+    name: Test Phase
+    description: templates/challenge_phase_2_description.html
+    leaderboard_public: True
+    is_public: True
+    is_submission_public: True
+    start_date: 2019-01-01 00:00:00
+    end_date: 2099-05-24 23:59:59
+    test_annotation_file: annotations/test_annotations_testsplit.json
+    codename: test
+    max_submissions_per_day: 5
+    max_submissions_per_month: 50
+    max_submissions: 50
+    default_submission_meta_attributes:
+      - name: method_name
+        is_visible: True
+      - name: method_description
+        is_visible: True
+    is_restricted_to_select_one_submission: False
+    is_partial_submission_evaluation_enabled: False
+    # --- #
+
+# --- #
+# 학습용 데이터셋과 정답 데이터셋의 평가를 분리해서 수행할 수 있습니다. #
+# evalutation_script에서 output을 출력할때 trainset과 testset에 대한 output을 함께 반환할 수 있습니다. #
+# (evaluation_script/main.py의 test 부분의 output 참조) #
+# 정답에 대한 결과만 제공하려면 분리할 필요가 없습니다. #
+dataset_splits:
+  - id: 1
+    name: Train Split
+    codename: train_split
+  - id: 2
+    name: Test Split
+    codename: test_split
+# --- #
+
+# --- #
+# 리더보드 생성 부분 #
+# 리더보드를 여러개 운영해야할 경우에는 수정하고 아닐 경우에는 필요한 하나만 운영해도 괜찮습니다! #
+challenge_phase_splits:
+  # --- #
+  # 생성은 모두 위에서 생성한 것들의 번호를 입력해주면 됩니다. #
+  # challenge_phases에서 어떤 챌린지를 쓸지 번호를 입력하고, #
+  # leaderboard_id에 위에서 생성한 leaderboard(평가 메트릭 입력했던 부분)의 id를 입력하고, #
+  # dataset_split_id을 통해 어떤 데이터셋으로 평가하는지 입력하고, #
+  # visibility를 수정하면 끝입니다. #
+    # Visibility Description #
+    # 1 Only visible to challenge host #
+    # 2 Only visible to challenge host and participant who made that submission #
+    # 3 Visible to everyone on leaderboard #
+  # 공개 옵션은 위의 숫자를 보고 입력 #
+  # --- #
+  - challenge_phase_id: 1
+    leaderboard_id: 1
+    dataset_split_id: 1
+    visibility: 3
+    leaderboard_decimal_precision: 2 # 소수점 자리 설정하는 부분
+    is_leaderboard_order_descending: True
+  # --- #
+
+  # --- #
+  # 위의 설명 참고 #
+  - challenge_phase_id: 2
+    leaderboard_id: 1
+    dataset_split_id: 1
+    visibility: 3
+    leaderboard_decimal_precision: 2
+    is_leaderboard_order_descending: True
+  - challenge_phase_id: 2
+    leaderboard_id: 1
+    dataset_split_id: 2
+    visibility: 3
+    leaderboard_decimal_precision: 2
+    is_leaderboard_order_descending: True
+  # --- #
