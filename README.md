@@ -28,7 +28,7 @@
     └── terms_and_conditions.html               # Contains terms and conditions related to the challenge
 ```
 
-## config 파일을 이용헤서 챌린지를 생성하는 방법
+## config 파일을 이용해서 챌린지를 생성하는 방법
 
 1. Fork this repository. 이 레포지토리를 다운받습니다.
 2. 필요하다면, [EvalAI challenge creation documentation](https://evalai.readthedocs.io/en/latest/configuration.html) 을 읽고 구조를 파악합니다.
@@ -129,6 +129,16 @@
 ![submit_chall_3](img/submit_chall_3.png)
 
 7. 정상적으로 챌린지가 만들어졌다면, 위와 같이 리더보드에서 제출한 정답지의 성능을 확인할 수 있습니다.
+
+## 챌린지 수정 하기
+
+![modify_chall](img/modify_chall.png)
+
+1. 챌린지 내용을 수정하고 싶으면 각 페이지에서 edit 버튼을 누르면 수정할 수 있습니다.
+
+![modify_chall_2](img/modify_chall_2.png)
+
+2. evaluation code의 수정이 필요한 경우 위의 그림처럼 새로 업로드해 수정할 수 있습닏.
 
 ---
 
