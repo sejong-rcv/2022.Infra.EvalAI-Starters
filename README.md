@@ -30,13 +30,13 @@
 
 ## config 파일을 이용해서 챌린지를 생성하는 방법
 
-1. Fork this repository. 이 레포지토리를 다운받습니다.
+1. 이 레포지토리를 다운받습니다.
 2. 필요하다면, [EvalAI challenge creation documentation](https://evalai.readthedocs.io/en/latest/configuration.html) 을 읽고 구조를 파악합니다.
 3. `challenge_config.yaml`을 먼저 열고, 적혀있는 주석을 바탕으로 챌린지를 세팅합니다.
 4. `templates\`로 이동하여, 각 `html`에 맞는 문제 설명을 적습니다.
 5. `annotations\`로 이동하여, 정답 파일을 넣습니다.
 6. `evalutation_script\main.py`로 이동하여, `challenge_config.yaml`에 입력했던 정답 파일의 경로를 바탕으로 평가 코드를 작성합니다.
-6. 모든 수정이 마무리 되었다면, `./run.sh` 명령어를 사용하여 `challenge_config.zip`을 만듭니다.
+6. 모든 수정이 마무리 되었다면, `./run.sh` 명령어를 사용하여 `challenge_config.zip`을 만듭니다. (윈도우의 경우 이슈 참고)
 7. [챌린지 업로드 링크](http://203.250.148.129:3088/web/challenge-host-teams)로 이동하여, 챌린지를 업로드합니다. (플랫폼 사용법은 아래에 자세히 나옵니다.)
 8. 챌린지가 생성이 되면, 평가를 시작하기 위해 worker를 재시작해야 합니다. (worker 재시작 방법은 아래에 자세히 나옵니다.)
 9. [챌린지 리스트](http://203.250.148.129:3088/web/challenges/list)에서 자신의 챌린지가 제대로 생성되었는지 확인하면 됩니다.
