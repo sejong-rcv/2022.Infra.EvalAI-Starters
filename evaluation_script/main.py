@@ -42,13 +42,20 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
     # --- #
     # test_annotation_file == challenge_config.yaml에서 설정한 정답 파일 #
     # user_submission_file == 유저가 사이트에서 업로드할 파일 #
-    # phase_codename = challenge_config에서 설정하였음
+    # phase_codename = challenge_config에서 설정하였음 #
     # --- #
 
     # --- #
     # 아래 output에 결과를 입력하고 return하면 사이트내 리더보드에 올라갑니다. #
     # output의 양식은 본인이 challenge_config.yaml에서 설정한 dataset_splits과 leaderboard(평가 메트릭)에 맞추시면 됩니다. #
     output = {}
+    # --- #
+    
+    # --- #
+    # test_annotation_file(json 형식)과 user_submission_file(json 형식)을 비교하는 평가 코드는 이 위치에 넣어주세요. #
+    # phase_codename을 challenge_config에서 설정하지 않았다면, 굳이 반복문으로 나눌 필요는 없습니다. #
+    # challenge_config의 dataset_splits과 leaderboard의 labels를 기반으로 output["result"]에 결과값을 입력하면 됩니다. #
+    # 해당 repo의 issue #3에 @chldydgh4687님이 예시를 올려두었으니, 해당 내용을 참고하셔도 좋습니다...! #
     # --- #
 
     if phase_codename == "dev":
